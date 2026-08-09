@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Mahdi Sayedi Rad — Industrial Technology R&D Specialist"/>
+  <title>مهدی سیدی راد · متخصص تحقیق و توسعه تکنولوژی های صنعتی</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ══ TOKENS ═════════════════════════════════════════════ */
+:root {
+  --bg: #262626;
+  --card: #f5f7e1;
+  --green: #00874a;
+  --purple: #715ed0;
+  --yellow: #fbeb60;
+  --orange: #ff723b;
+  --text-card: #1a1a1a;
+  --text-muted: #5a5a3a;
+  --nav-h: 68px;
+  --r: 16px;
+  --r-lg: 24px;
+  --gap: 14px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--card);
+  font-family: 'Vazirmatn', 'Space Grotesk', sans-serif;
+  direction: rtl;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.en { direction: ltr; font-family: 'Space Grotesk', 'Vazirmatn', sans-serif; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+::-webkit-scrollbar { width: 4px; background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 4px; }
+
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  background: rgba(38,38,38,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(245,247,225,0.06);
+  transition: background var(--transition);
+}
+.navbar.scrolled { background: rgba(38,38,38,0.97); }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  height: 100%; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+
+.nav-links {
+  list-style: none; display: flex; gap: 4px;
+  background: rgba(245,247,225,0.05);
+  border-radius: 40px; padding: 5px;
+}
+.nav-link {
+  display: block; padding: 7px 16px; border-radius: 30px;
+  font-size: 13.5px; font-weight: 500; color: rgba(245,247,225,0.7);
+  transition: all var(--transition);
+}
+.nav-link:hover, .nav-link.active { background: var(--card); color: var(--text-card); }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.lang-btn {
+  background: transparent; border: 1.5px solid var(--green);
+  color: var(--green); border-radius: 8px;
+  padding: 6px 14px; font-size: 12px; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+  transition: all var(--transition);
+  pointer-events: none;
+  opacity: 0.7;
+}
+.lang-btn:hover { background: var(--green); color: var(--bg); }
+.burger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.burger span { display: block; width: 22px; height: 2px; background: var(--card); border-radius: 2px; transition: all var(--transition); }
+
+/* ===== اصلاح فاصله بخش‌ها از هدر ===== */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+/* بخش هرو */
+.section.hero-section {
+  padding-top: calc(var(--nav-h) + 20px);
+}
+
+/* سایر بخش‌ها (به جز هرو) */
+.section:not(.hero-section) {
+  padding-top: calc(var(--nav-h) + 30px);
+  scroll-margin-top: calc(var(--nav-h) + 20px);
+}
+
+/* بخش تماس با فضای خالی بیشتر زیرش */
+#contact {
+  padding-top: calc(var(--nav-h) + 60px);
+  padding-bottom: 600px;
+  scroll-margin-top: calc(var(--nav-h) + 50px);
+}
+
+.section-header { 
+  margin-bottom: 16px;
+}
+.hero-main {
+  padding-bottom: 16px;
+}
+
+.bento-grid {
+  display: grid; gap: var(--gap);
+}
+
+.hero-grid {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto;
+}
+.hero-main {
+  grid-column: 1 / 3; grid-row: 1 / 3;
+}
+.stat-card { grid-column: span 1; }
+.algo-card {
+  grid-column: 3 / 5; grid-row: 2 / 4;
+}
+
+.about-grid {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+}
+.about-main { grid-column: 1 / 2; grid-row: 1; }
+.achievements-card { grid-column: 2 / 3; grid-row: 1; }
+
+.projects-grid { grid-template-columns: repeat(4, 1fr); }
+.articles-grid { grid-template-columns: repeat(4, 1fr); }
+.products-grid { grid-template-columns: repeat(4, 1fr); }
+.contact-grid { grid-template-columns: repeat(4, 1fr); }
+
+.bento-card {
+  background: var(--card);
+  border-radius: var(--r-lg);
+  padding: 24px;
+  color: var(--text-card);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.bento-card::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(135deg, rgba(0,135,74,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.bento-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
+
+.accent-purple { background: var(--purple); color: #fff; }
+.accent-orange { background: var(--orange); color: #fff; }
+.accent-yellow { background: var(--yellow); color: var(--text-card); }
+
+.hero-title {
+  font-size: clamp(28px, 4vw, 44px); font-weight: 900;
+  line-height: 1.2; color: var(--text-card); margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+.hero-sub {
+  font-size: 16px; font-weight: 700; color: var(--green);
+  margin-bottom: 8px; line-height: 1.8;
+}
+.hero-sub2 {
+  font-size: 15px; font-weight: 600; color: var(--green);
+  margin-bottom: 8px; line-height: 1.8;
+}
+.hero-sub3 {
+  font-size: 13px; color: var(--text-muted);
+  line-height: 2; margin-bottom: 16px;
+  max-width: 90%;
+}
+.hero-sub4 {
+  font-size: 13px; color: var(--text-muted);
+  line-height: 2; margin-bottom: 0;
+  max-width: 90%;
+  text-align: right;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.stat-val {
+  font-size: clamp(32px, 4vw, 48px); font-weight: 900;
+  line-height: 1; margin-bottom: 6px;
+}
+.stat-card .stat-val { color: var(--green); }
+.accent-purple .stat-val, .accent-orange .stat-val { color: #fff; }
+.accent-yellow .stat-val { color: var(--text-card); }
+.stat-label { font-size: 11.5px; font-weight: 500; opacity: 0.8; line-height: 1.4; }
+
+.algo-card { background: #1a1a1a; color: var(--card); }
+.algo-card::before { background: linear-gradient(135deg, rgba(0,135,74,0.08) 0%, rgba(113,94,208,0.08) 100%); }
+.algo-tag {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(245,247,225,0.6);
+  margin-bottom: 8px;
+}
+.algo-name {
+  font-size: clamp(20px, 2.5vw, 28px); font-weight: 800;
+  color: var(--card); margin-bottom: 16px;
+}
+.algo-svg { width: 100%; }
+.algo-path { stroke-dasharray: 200; stroke-dashoffset: 200; animation: drawLine 2s ease forwards 0.5s; }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+.algo-desc { font-size: 12px; color: rgba(245,247,225,0.6); margin-top: 12px; line-height: 1.6; }
+
+.about-heading {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-card);
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+.about-text {
+  font-size: 14.5px;
+  line-height: 2;
+  color: var(--text-card);
+  margin-bottom: 0;
+}
+
+.achievements-card {
+  background: var(--card);
+  border-radius: var(--r-lg);
+  padding: 24px;
+  color: var(--text-card);
+}
+.achievements-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-card);
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+}
+.achievements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.achievements-list li {
+  font-size: 14.5px;
+  line-height: 2;
+  color: var(--text-card);
+  margin-bottom: 10px;
+  padding-right: 4px;
+}
+.achievements-list li:last-child { margin-bottom: 0; }
+
+.project-card {
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 140px;
+}
+.project-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+.project-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-card);
+  line-height: 1.6;
+}
+
+.article-card, .product-card {
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 140px;
+}
+.article-card:hover, .product-card:hover {
+  background: var(--green);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+.article-card:hover .article-title,
+.article-card:hover .article-desc,
+.product-card:hover .product-title,
+.product-card:hover .product-desc,
+.product-card:hover .product-price {
+  color: #fff;
+}
+.article-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-card);
+  line-height: 1.6;
+}
+.article-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.product-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+.product-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-card);
+  line-height: 1.6;
+}
+.product-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.product-price {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green);
+  margin-top: 6px;
+}
+
+.contact-card {
+  text-align: center;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+}
+.contact-card:hover { background: var(--green); }
+.contact-card:hover .contact-val,
+.contact-card:hover .contact-label { color: #fff; }
+.contact-card:hover .contact-icon { color: #fff; }
+.contact-card:hover .contact-icon-instagram svg { color: #fff; }
+
+.contact-icon {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--green);
+  margin-bottom: 8px;
+  transition: color var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.contact-icon-instagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-icon-instagram svg {
+  color: var(--green);
+  transition: color var(--transition);
+  display: block;
+}
+.contact-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  transition: color var(--transition);
+}
+.contact-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-card);
+  transition: color var(--transition);
+}
+
+.footer {
+  border-top: 1px solid rgba(245,247,225,0.06);
+  padding: 24px 20px;
+  font-size: 12px;
+  color: rgba(245,247,225,0.35);
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.nav-mobile-open .nav-links {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  background: rgba(38,38,38,0.98);
+  padding: 16px;
+  border-radius: 0;
+  gap: 4px;
+}
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-main { grid-column: 1 / 3; }
+  .algo-card { grid-column: 1 / 3; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-main { grid-column: 1; }
+  .achievements-card { grid-column: 1; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .articles-grid { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  :root { --gap: 10px; --r-lg: 18px; }
+  .nav-links { display: none; }
+  .burger { display: flex; }
+  
+  /* هرو */
+  .hero-grid { 
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  .hero-main { 
+    grid-column: 1; 
+    grid-row: 1;
+  }
+  .algo-card { 
+    grid-column: 1; 
+    grid-row: 2;
+    margin-top: 10px;
+  }
+  .stat-card { grid-column: 1; }
+  
+  /* درباره من - ترتیب درست */
+  .about-grid { 
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  .about-main { 
+    grid-column: 1; 
+    grid-row: 1;
+  }
+  .achievements-card { 
+    grid-column: 1; 
+    grid-row: 2;
+    margin-top: 10px;
+  }
+  
+  .projects-grid { grid-template-columns: 1fr; }
+  .articles-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  
+  .bento-card { padding: 18px; }
+  .hero-title { font-size: 28px; }
+  .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
+  .hero-sub3, .hero-sub4 {
+    max-width: 100%;
+    font-size: 12px;
+  }
+  .achievements-list li { font-size: 12.5px; }
+  .project-card, .article-card, .product-card, .contact-card { min-height: 100px; }
+  .project-title, .article-title, .product-title { font-size: 14px; }
+  .project-icon, .product-icon { font-size: 28px; }
+  .product-price { font-size: 12px; }
+}
+
+body.en .btn-primary:hover { transform: translateX(3px); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="https://i.postimg.cc/XJdVvxZw/1.jpg" alt="لوگو" style="height:40px; width:auto; border-radius:8px;"/>
+      <div class="logo-text" style="display:flex; flex-direction:column; align-items:flex-start; line-height:1.2; margin-right:10px;">
+        <span style="font-size:18px; font-weight:900; color:var(--green); letter-spacing:0px;" data-key="hero_title">مهدی سیدی راد</span>
+        <span style="font-size:10px; font-weight:500; color:rgba(245,247,225,0.6); letter-spacing:0.5px;" data-key="hero_subtitle2">متخصص تحقیق و توسعه تکنولوژی های صنعتی</span>
+      </div>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-key="nav-0" class="nav-link active">خانه</a></li>
+      <li><a href="#about" data-key="nav-1" class="nav-link">درباره من</a></li>
+      <li><a href="#projects" data-key="nav-2" class="nav-link">پروژه های برتر</a></li>
+      <li><a href="#articles" data-key="nav-3" class="nav-link">نوآوری ها و مقالات برتر</a></li>
+      <li><a href="#products" data-key="nav-4" class="nav-link">محصولات رادتک</a></li>
+      <li><a href="#contact" data-key="nav-5" class="nav-link">تماس</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="lang-btn" id="langBtn" data-key="lang_switch">EN</button>
+      <button class="burger" id="burger" aria-label="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <section class="section hero-section" id="home">
+    <div class="bento-grid hero-grid">
+
+      <div class="bento-card hero-main reveal">
+        <h1 class="hero-title" data-key="hero_title">مهدی سیدی راد</h1>
+        <p class="hero-sub" data-key="hero_subtitle">مهندس تحقیق و توسعه</p>
+        <p class="hero-sub2" data-key="hero_subtitle2">متخصص تحقیق و توسعه تکنولوژی های صنعتی</p>
+        <p class="hero-sub3" data-key="hero_subtitle3">فعال در زمینه های تحقیق و توسعه، طراحی و مهندسی الگوریتم های صنعتی و سیستم سازی، بهینه سازی و توسعه سیستم ها، مطالعات امکانسنجی، مطالعات فنی و مهندسی، مهندسی، برنامه ریزی و کنترل پروژه.</p>
+        <p class="hero-sub4" data-key="hero_subtitle4">بشر دوست، حامی کودکان، بیماران و طبیعت.</p>
+      </div>
+
+      <div class="bento-card stat-card reveal" data-delay="100">
+        <div class="stat-val" data-key="stats-0-val">4+</div>
+        <div class="stat-label" data-key="stats-0-label">سال تجربه کار تخصصی</div>
+      </div>
+      <div class="bento-card stat-card reveal accent-purple" data-delay="150">
+        <div class="stat-val" data-key="stats-1-val">1</div>
+        <div class="stat-label" data-key="stats-1-label">پروژه های بین المللی</div>
+      </div>
+      <div class="bento-card stat-card reveal accent-orange" data-delay="200">
+        <div class="stat-val" data-key="stats-2-val">2</div>
+        <div class="stat-label" data-key="stats-2-label">تعداد افتخارات</div>
+      </div>
+      <div class="bento-card stat-card reveal accent-yellow" data-delay="250">
+        <div class="stat-val" data-key="stats-3-val">2</div>
+        <div class="stat-label" data-key="stats-3-label">کار داوطلبانه</div>
+      </div>
+
+      <div class="bento-card algo-card reveal" data-delay="300">
+        <div class="algo-tag">تخصصی ترین کار تا کنون</div>
+        <div class="algo-name">الگوریتم آخرین قطره</div>
+        <div class="algo-visual">
+          <svg viewBox="0 0 120 60" class="algo-svg">
+            <defs>
+              <linearGradient id="dropGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00874a" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#715ed0" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+            <path d="M 10 50 Q 30 10 60 30 Q 90 50 110 20"
+              stroke="url(#dropGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"
+              class="algo-path"/>
+            <circle cx="10" cy="50" r="4" fill="#00874a" opacity="0.8"/>
+            <circle cx="60" cy="30" r="4" fill="#715ed0" opacity="0.8"/>
+            <circle cx="110" cy="20" r="4" fill="#00874a" opacity="0.8"/>
+          </svg>
+        </div>
+        <div class="algo-desc">پایداری مسیر سوژه تحت نیرو های متغیر همزمان</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" data-key="about_title">درباره من</div>
+    </div>
+    <div class="bento-grid about-grid">
+      <div class="bento-card about-main reveal">
+        <div class="about-heading" data-key="about_heading">مهدی راد هستم..</div>
+        <p class="about-text" data-key="about_text">تخصص من در همگام سازی دقیق داده ها با اجرای فنی میدانی و توسعه مدل های عملیاتی مبتنی بر تحقیق و توسعه ( R&D ) است. با بهره گیری از مطالعات امکان سنجی و تحقیق و توسعه، الگو های پیچیده داده را به مدل های الگوریتمی عملیاتی تبدیل می کنم که موفقیت ساختاری و عملیاتی سیستم های مقیاس‌ بزرگ را تضمین می کنند. چه در حال توسعه زیرساخت های یک پروژه ملی باشم و چه در بازار های صنعتی و تجاری تخصصی، تمرکز من بر ایجاد پل ارتباطی میان تحلیل پیش بینانه و کاهش ریسک عملیاتی است. باور دارم ارزش حقیقی هر مدل، در عملکرد میدانی و تاثیر آن بر راندمان واقعی اثبات می شود.</p>
+      </div>
+      <div class="bento-card achievements-card reveal" data-delay="100">
+        <div class="achievements-title" data-key="about_achievements">دستاورد های منتخب</div>
+        <ul class="achievements-list">
+          <li data-key="about_achievements_list-0">• کاهش ۷۵٪ زمان تهیه پروفیل اجرایی خط انتقال آب از طریق توسعه یک راهکار آماری مبتنی بر Microsoft Excel.</li>
+          <li data-key="about_achievements_list-1">• کاهش ۵۰٪ زمان تصمیم گیری در فورس پروژه ملی از طریق توسعه و اتوماسیون سیستم استراتژی و تصمیم گیری در Microsoft Excel.</li>
+          <li data-key="about_achievements_list-2">• انتخاب پروژه مخزن دو قلوی بتنی ۵۰۰۰ متر مکعبی جهت ارائه در بیست و هشتمین همایش ACI شاخه ایران و حضور در زمره پنج عضو اصلی تیم فنی ارائه دهنده پروژه.</li>
+          <li data-key="about_achievements_list-3">• مشارکت در تدوین ۴ بسته در برنامه جامع یک پروژه برای مناقصات بین‌المللی در ازبکستان.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" data-key="projects_title">پروژه های برتر</div>
+    </div>
+    <div class="bento-grid projects-grid" id="projectsGrid"></div>
+  </section>
+
+  <section class="section" id="articles">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" data-key="articles_title">نوآوری ها و مقالات برتر</div>
+    </div>
+    <div class="bento-grid articles-grid" id="articlesGrid"></div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" data-key="products_title">محصولات رادتک</div>
+    </div>
+    <div class="bento-grid products-grid" id="productsGrid"></div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" data-key="contact_title">تماس</div>
+    </div>
+    <div class="bento-grid contact-grid">
+      <a href="mailto:Mahdi48Rad@gmail.com" class="bento-card contact-card reveal">
+        <div class="contact-icon">✉</div>
+        <div class="contact-label" data-key="email_label">ایمیل</div>
+        <div class="contact-val">Mahdi48Rad@gmail.com</div>
+      </a>
+      <a href="https://linkedin.com/in/MahdiSayediRad" target="_blank" class="bento-card contact-card reveal" data-delay="100">
+        <div class="contact-icon">in</div>
+        <div class="contact-label" data-key="linkedin_label">لینکدین</div>
+        <div class="contact-val">MahdiSayediRad</div>
+      </a>
+      <a href="https://www.instagram.com/mahdi8rad" target="_blank" class="bento-card contact-card reveal" data-delay="200">
+        <div class="contact-icon contact-icon-instagram">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </div>
+        <div class="contact-label" data-key="instagram_label">اینستاگرام</div>
+        <div class="contact-val">mahdi8rad</div>
+      </a>
+      <a href="https://msrfmgvc.vercel.app" target="_blank" class="bento-card contact-card reveal" data-delay="300">
+        <div class="contact-icon">🧠</div>
+        <div class="contact-label" data-key="card_label">پازل هاشی</div>
+        <div class="contact-val">msrfmgvc.vercel.app</div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span data-key="footer">طراحی و توسعه: مهدی سیدی راد · Rad Tech</span>
+    <span class="footer-year">2026</span>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // داده‌های محتوای فارسی
+    const content = {
+      "nav": ["خانه", "درباره من", "پروژه های برتر", "نوآوری ها و مقالات برتر", "محصولات رادتک", "تماس"],
+      "hero_title": "مهدی سیدی راد",
+      "hero_subtitle": "مهندس تحقیق و توسعه",
+      "hero_subtitle2": "متخصص تحقیق و توسعه تکنولوژی های صنعتی",
+      "hero_subtitle3": "فعال در زمینه های تحقیق و توسعه، طراحی و مهندسی الگوریتم های صنعتی و سیستم سازی، بهینه سازی و توسعه سیستم ها، مطالعات امکانسنجی، مطالعات فنی و مهندسی، مهندسی، برنامه ریزی و کنترل پروژه.",
+      "hero_subtitle4": "بشر دوست، حامی کودکان، بیماران و طبیعت.",
+      "hero_cta": "",
+      "hero_cta2": "",
+      "hero_cta3": "",
+      "about_title": "درباره من",
+      "about_heading": "مهدی راد هستم..",
+      "about_text": "تخصص من در همگام سازی دقیق داده ها با اجرای فنی میدانی و توسعه مدل های عملیاتی مبتنی بر تحقیق و توسعه ( R&D ) است. با بهره گیری از مطالعات امکان سنجی و تحقیق و توسعه، الگو های پیچیده داده را به مدل های الگوریتمی عملیاتی تبدیل می کنم که موفقیت ساختاری و عملیاتی سیستم های مقیاس‌ بزرگ را تضمین می کنند. چه در حال توسعه زیرساخت های یک پروژه ملی باشم و چه در بازار های صنعتی و تجاری تخصصی، تمرکز من بر ایجاد پل ارتباطی میان تحلیل پیش بینانه و کاهش ریسک عملیاتی است. باور دارم ارزش حقیقی هر مدل، در عملکرد میدانی و تاثیر آن بر راندمان واقعی اثبات می شود.",
+      "about_achievements": "دستاورد های منتخب",
+      "about_achievements_list": [
+        "کاهش ۷۵٪ زمان تهیه پروفیل اجرایی خط انتقال آب از طریق توسعه یک راهکار آماری مبتنی بر Microsoft Excel.",
+        "کاهش ۵۰٪ زمان تصمیم گیری در فورس پروژه ملی از طریق توسعه و اتوماسیون سیستم استراتژی و تصمیم گیری در Microsoft Excel.",
+        "انتخاب پروژه مخزن دو قلوی بتنی ۵۰۰۰ متر مکعبی جهت ارائه در بیست و هشتمین همایش ACI شاخه ایران و حضور در زمره پنج عضو اصلی تیم فنی ارائه دهنده پروژه.",
+        "مشارکت در تدوین ۴ بسته در برنامه جامع یک پروژه برای مناقصات بین‌المللی در ازبکستان."
+      ],
+      "projects_title": "پروژه های برتر",
+      "projects": [
+        {"icon": "💧", "title": "پروژه ملی انتقال آب از زیاران به بیلقان"},
+        {"icon": "🏗️", "title": "مناقصه پروژه سیستم انتقال آب و فاضلاب ازبکستان"},
+        {"icon": "🌱", "title": "مطالعات امکانسنجی صیفیجات"},
+        {"icon": "📊", "title": "وب اپ ماتریس ایده پردازی رادایده"}
+      ],
+      "articles_title": "نوآوری ها و مقالات برتر",
+      "articles": [
+        {"title": "نوآوری ۱", "desc": "به زودی..", "link": "#"},
+        {"title": "نوآوری ۲", "desc": "به زودی..", "link": "#"},
+        {"title": "مقاله ۳", "desc": "به زودی..", "link": "#"},
+        {"title": "مقاله ۴", "desc": "به زودی..", "link": "#"}
+      ],
+      "products_title": "محصولات رادتک",
+      "products": [
+        {
+          "icon": "📊",
+          "title": "رادایده",
+          "desc": "وب اپلیکیشن ماتریس ایده پردازی",
+          "price": "بها : رایگان",
+          "link": "https://radtech-idea-matrix-radeideh.vercel.app/"
+        },
+        {
+          "icon": "🌸",
+          "title": "رادهیتا",
+          "desc": "وب اپلیکیشن پایش چرخه قاعدگی بانوان",
+          "price": "بها : رایگان",
+          "link": "https://radhita-pf.vercel.app/"
+        },
+        {
+          "icon": "📈",
+          "title": "رادهانا",
+          "desc": "گزارش پایش سرمایه و بازار",
+          "price": "بها : ۷۹۹ هزار تومان",
+          "link": "#"
+        },
+        {
+          "icon": "🛠️",
+          "title": "محصول ۴",
+          "desc": "به زودی..",
+          "price": "",
+          "link": "#"
+        }
+      ],
+      "stats": [
+        {"val":"4+","label":"سال تجربه کار تخصصی"},
+        {"val":"1","label":"پروژه های بین المللی"},
+        {"val":"2","label":"تعداد افتخارات"},
+        {"val":"2","label":"کار داوطلبانه"}
+      ],
+      "contact_title": "تماس با من",
+      "email_label": "ایمیل",
+      "linkedin_label": "لینکدین",
+      "instagram_label": "اینستاگرام",
+      "card_label": "پازل هاشی",
+      "footer": "طراحی و توسعه: مهدی سیدی راد · Rad Tech",
+      "lang_switch": "EN"
+    };
+
+    // اعمال محتوا در صفحه
+    function applyContent() {
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.dataset.key;
+        if (key.startsWith("nav-")) {
+          const i = parseInt(key.split("-")[1]);
+          if (content.nav?.[i]) el.textContent = content.nav[i];
+        } else if (key.startsWith("stats-")) {
+          const parts = key.split("-");
+          const i = parseInt(parts[1]);
+          const field = parts[2];
+          if (content.stats?.[i]?.[field]) el.textContent = content.stats[i][field];
+        } else if (key.startsWith("about_achievements_list-")) {
+          const i = parseInt(key.split("-")[1]);
+          if (content.about_achievements_list?.[i]) {
+            el.textContent = "• " + content.about_achievements_list[i];
+          }
+        } else if (content[key]) {
+          el.textContent = content[key];
+        }
+      });
+
+      // پروژه‌ها
+      const pg = document.getElementById("projectsGrid");
+      if (pg && content.projects) {
+        pg.innerHTML = content.projects.map((p, i) => `
+          <div class="bento-card project-card reveal" data-delay="${i * 60}">
+            <div class="project-icon">${p.icon || '📋'}</div>
+            <div class="project-title">${p.title}</div>
+          </div>
+        `).join("");
+        observeReveal();
+      }
+
+      // مقالات
+      const ag = document.getElementById("articlesGrid");
+      if (ag && content.articles) {
+        ag.innerHTML = content.articles.map((a, i) => `
+          <a href="${a.link || '#'}" target="${a.link && a.link !== '#' ? '_blank' : ''}" class="bento-card article-card reveal" data-delay="${i * 80}" style="text-decoration:none;color:inherit;">
+            <div class="article-title">${a.title}</div>
+            <div class="article-desc">${a.desc}</div>
+          </a>
+        `).join("");
+        observeReveal();
+      }
+
+      // محصولات
+      const pg2 = document.getElementById("productsGrid");
+      if (pg2 && content.products) {
+        pg2.innerHTML = content.products.map((p, i) => `
+          <a href="${p.link || '#'}" target="${p.link && p.link !== '#' ? '_blank' : ''}" class="bento-card product-card reveal" data-delay="${i * 60}" style="text-decoration:none;color:inherit;">
+            <div class="product-icon">${p.icon || '🛠️'}</div>
+            <div class="product-title">${p.title}</div>
+            <div class="product-desc">${p.desc}</div>
+            ${p.price ? `<div class="product-price">${p.price}</div>` : ''}
+          </a>
+        `).join("");
+        observeReveal();
+      }
+
+      // دکمه زبان غیرفعال
+      const lb = document.getElementById("langBtn");
+      if (lb) {
+        lb.textContent = "EN";
+        lb.style.pointerEvents = "none";
+        lb.style.cursor = "default";
+        lb.style.opacity = "0.7";
+      }
+    }
+
+    // اسکرول نرم
+    function initSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener("click", e => {
+          const targetId = a.getAttribute("href");
+          if (targetId === "#") return;
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            const nav = document.querySelector('.navbar');
+            const navHeight = nav ? nav.offsetHeight : 68;
+            let extraOffset = 20;
+            if (targetId === "#contact") {
+              extraOffset = 50;
+            }
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - extraOffset;
+            window.scrollTo({ top: targetPosition, behavior: "smooth" });
+          }
+        });
+      });
+    }
+
+    // انیمیشن Reveal
+    function observeReveal() {
+      const els = document.querySelectorAll(".reveal:not(.visible)");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.dataset.delay || 0;
+            setTimeout(() => entry.target.classList.add("visible"), parseInt(delay));
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      els.forEach(el => observer.observe(el));
+    }
+
+    // منو موبایل
+    function initBurger() {
+      const burger = document.getElementById("burger");
+      const navbar = document.getElementById("navbar");
+      burger?.addEventListener("click", () => {
+        navbar.classList.toggle("nav-mobile-open");
+      });
+      document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", () => navbar.classList.remove("nav-mobile-open"));
+      });
+    }
+
+    // نوار بالا
+    function initNavbar() {
+      const nav = document.getElementById("navbar");
+      const links = document.querySelectorAll(".nav-link");
+      const sections = document.querySelectorAll("section[id]");
+
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 20);
+        let current = "";
+        sections.forEach(sec => {
+          if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+        });
+        links.forEach(link => {
+          link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+        });
+      }, { passive: true });
+    }
+
+    // مقداردهی اولیه
+    function init() {
+      initNavbar();
+      initBurger();
+      initSmoothScroll();
+      observeReveal();
+      applyContent();
+    }
+
+    init();
+  });
+</script>
+</body>
+</html>
